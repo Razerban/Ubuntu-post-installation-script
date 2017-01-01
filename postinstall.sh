@@ -177,6 +177,8 @@ cp Package Control.sublime-settings ~/.config/sublime-text-3/Packages/User/Packa
 cp Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 # Update AppStream
 sudo appstreamcli refresh --force
+# Remove gedit
+sudo apt remove gedit
 # Cleanup
 sudo apt -f install -y
 sudo apt-get -y autoremove
