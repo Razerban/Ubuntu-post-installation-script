@@ -186,8 +186,11 @@ sudo apt-get -y clean
 rm -rf ~/Documents
 rm -rf ~/Public
 rm -rf ~/Templates
+rm -rf ~/Modèles # Support for french version
 rm -rf ~/Videos
+rm -rf ~/Vidéos # Support for french version
 rm -rf ~/Music
+rm -rf ~/Musique # Support for french version
 rm ~/examples.desktop
 mkdir ~/Development
 # Add programs to start when user logs in
