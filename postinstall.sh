@@ -193,6 +193,9 @@ rm -rf ~/Music
 rm -rf ~/Musique # Support for french version
 rm ~/examples.desktop
 mkdir ~/Development
+# Remove folders from the nautilus sidebar
+sed -i.bak '/XDG_TEMPLATES_DIR\|XDG_PUBLICSHARE_DIR\|XDG_DOCUMENTS_DIR\|XDG_MUSIC_DIR\|XDG_PICTURES_DIR\|XDG_VIDEOS_DIR/d' ./.config/user-dirs.dirs
+echo "enabled=false" > ~/.config/user-dirs.conf # To make the change permanent
 # Add programs to start when user logs in
 mkdir -p ~/.config/autostart
 cp /usr/share/applications/indicator-multiload.desktop ~/.config/autostart
