@@ -167,6 +167,7 @@ echo '' >> ~/.zshrc
 echo "# PYTHON ALIASES START" >> ~/.zshrc
 echo 'alias update_python2="$ANACONDA2/bin/conda update --all -y && $ANACONDA2/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA2/bin/pip install -U"' >> ~/.zshrc
 echo 'alias update_python3="$ANACONDA3/bin/conda update --all -y && $ANACONDA3/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA3/bin/pip install -U"' >> ~/.zshrc
+echo 'alias update_python="update_python2 && update_python3"' >> ~/.zshrc
 echo 'alias pip2="$ANACONDA2/bin/pip"' >> ~/.zshrc
 echo 'alias pip3="$ANACONDA3/bin/pip"' >> ~/.zshrc
 echo "# PYTHON ALIASES END" >> ~/.zshrc
