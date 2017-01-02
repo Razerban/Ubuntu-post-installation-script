@@ -78,6 +78,14 @@ sudo dpkg -i teamviewer_i386.deb
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
+# Installing Intel Graphics Update Tool for Linux
+wget $(curl -Ls https://01.org/linuxgraphics/downloads | grep -Po '(?<=href=")[^"]*16.04[^"]*amd64.deb')
+sudo dpkg -i intel-graphics-update-tool*.deb
+wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-GROUP-KEY-ilg -O - | sudo apt-key add -
+wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg -O - | sudo apt-key add -
+wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-2 -O - | sudo apt-key add -
+wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-3 -O - | sudo apt-key add -
+wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-4 -O - | sudo apt-key add -
 
 echo '4. Configuring installed packages and softwares and tweaking the system'
 # Show the username on the top menu bar
