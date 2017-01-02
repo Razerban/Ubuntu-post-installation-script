@@ -39,6 +39,8 @@ sudo add-apt-repository -y "deb http://linux.dropbox.com/ubuntu $(lsb_release -s
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 # Canonical Partners
 sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
+# Graphics Drivers
+sudo add-apt-repository ppa:graphics-drivers/ppa
 
 echo '2. Updating the system packages and installing packages and softwares from repositories'
 # Updating the apt cache
