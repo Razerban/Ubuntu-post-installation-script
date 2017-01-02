@@ -155,8 +155,8 @@ echo 'export PATH=$ANACONDA2/bin:$PATH' >> ~/.zshrc
 echo "# PYTHON VARIABLES END" >> ~/.zshrc
 echo '' >> ~/.zshrc
 echo "# PYTHON ALIASES START" >> ~/.zshrc
-echo 'alias anaconda2_update="$ANACONDA2/bin/conda update --all -y"' >> ~/.zshrc
-echo 'alias anaconda3_update="$ANACONDA3/bin/conda update --all -y"' >> ~/.zshrc
+echo 'alias update_python2="$ANACONDA2/bin/conda update --all -y && $ANACONDA2/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA2/bin/pip install -U"' >> ~/.zshrc
+echo 'alias update_python3="$ANACONDA3/bin/conda update --all -y && $ANACONDA3/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA3/bin/pip install -U"' >> ~/.zshrc
 echo 'alias pip2="$ANACONDA2/bin/pip"' >> ~/.zshrc
 echo 'alias pip3="$ANACONDA3/bin/pip"' >> ~/.zshrc
 echo "# PYTHON ALIASES END" >> ~/.zshrc
