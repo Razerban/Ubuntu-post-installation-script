@@ -217,6 +217,8 @@ cp /usr/share/applications/indicator-multiload.desktop ~/.config/autostart
 cp /usr/share/applications/redshift-gtk.desktop ~/.config/autostart
 cp /usr/share/applications/indicator-netspeed-unity.desktop ~/.config/autostart
 cp /usr/share/applications/indicator-sound-switcher.desktop ~/.config/autostart
+# Make Ubuntu use 'Local' time instead of Hardware time
+sudo timedatectl set-local-rtc 1
 # Prompt for a reboot
 clear
 echo ""
