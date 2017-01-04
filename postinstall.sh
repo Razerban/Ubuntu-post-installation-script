@@ -43,6 +43,8 @@ sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc)
 sudo add-apt-repository ppa:graphics-drivers/ppa -y
 # Oracle JDK 7
 sudo add-apt-repository ppa:webupd8team/java -y
+# Indicator Brightness
+sudo add-apt-repository ppa:indicator-brightness/ppa -y
 
 echo '2. Updating the system packages and installing packages and softwares from repositories'
 # Updating the apt cache
@@ -50,7 +52,7 @@ sudo apt update
 # Installing system upgrades first
 sudo apt upgrade -y
 # Installing the packages and softwares from repos
-sudo apt install oracle-java7-installer oracle-java8-installer ubuntu-restricted-extras unity-tweak-tool compizconfig-settings-manager arc-theme gnome-themes-* shimmer-themes adapta-gtk-theme curl wget ubuntu-make vlc gparted gksu clipit aptitude synaptic gdebi-core handbrake filezilla synaptic browser-plugin-vlc playonlinux aria2 qbittorrent tree inkscape clementine chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree gdebi skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 shutter dropbox flashplugin-installer gufw bleachbit youtube-dl python-software-properties openssh-server default-jdk indicator-multiload caffeine variety indicator-sound-switcher indicator-netspeed-unity ffmpeg gxine htop libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller redshift redshift-gtk compiz compizconfig-settings-manager fonts-ancient-scripts ttf-ancient-fonts compiz-plugins systemback ubuntu-wallpapers-* ubuntukylin-wallpapers-* ubuntustudio-wallpapers git git-gui zsh build-essential curl python-setuptools ruby gcc libjpeg62:i386 libxtst6:i386 grub-customizer appgrid vivaldi-stable appstream/xenial-backports vim libxss1 git gitk gitg gparted linux-headers-generic dconf-tools rsync ssh openssh-server software-properties-common whiptail autotools-dev git-core samba winbind -y
+sudo apt install indicator-brightness oracle-java7-installer oracle-java8-installer ubuntu-restricted-extras unity-tweak-tool compizconfig-settings-manager arc-theme gnome-themes-* shimmer-themes adapta-gtk-theme curl wget ubuntu-make vlc gparted gksu clipit aptitude synaptic gdebi-core handbrake filezilla synaptic browser-plugin-vlc playonlinux aria2 qbittorrent tree inkscape clementine chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree gdebi skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 shutter dropbox flashplugin-installer gufw bleachbit youtube-dl python-software-properties openssh-server default-jdk indicator-multiload caffeine variety indicator-sound-switcher indicator-netspeed-unity ffmpeg gxine htop libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller redshift redshift-gtk compiz compizconfig-settings-manager fonts-ancient-scripts ttf-ancient-fonts compiz-plugins systemback ubuntu-wallpapers-* ubuntukylin-wallpapers-* ubuntustudio-wallpapers git git-gui zsh build-essential curl python-setuptools ruby gcc libjpeg62:i386 libxtst6:i386 grub-customizer appgrid vivaldi-stable appstream/xenial-backports vim libxss1 git gitk gitg gparted linux-headers-generic dconf-tools rsync ssh openssh-server software-properties-common whiptail autotools-dev git-core samba winbind -y
 sudo apt install -f -y
 
 echo '3. Installing softwares from official websites'
@@ -219,6 +221,7 @@ cp /usr/share/applications/indicator-netspeed-unity.desktop ~/.config/autostart
 cp /usr/share/applications/indicator-sound-switcher.desktop ~/.config/autostart
 # Make Ubuntu use 'Local' time instead of Hardware time
 sudo timedatectl set-local-rtc 1
+timedatectl set-local-rtc 1
 # Prompt for a reboot
 clear
 echo ""
