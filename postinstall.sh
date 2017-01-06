@@ -94,6 +94,9 @@ wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg -O - | s
 wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-2 -O - | sudo apt-key add -
 wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-3 -O - | sudo apt-key add -
 wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-4 -O - | sudo apt-key add -
+# Installing Microsoft fonts
+wget http://ftp.fr.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
+sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
 
 echo '4. Configuring installed packages and softwares and tweaking the system'
 # Show the username on the top menu bar
