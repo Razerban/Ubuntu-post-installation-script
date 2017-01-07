@@ -70,7 +70,8 @@ sudo dpkg -i vbox.deb
 wget $(curl -Ls https://www.virtualbox.org/wiki/Downloads | grep -Po '(?<=href=")[^"]*.vbox-extpack' | grep "$(curl -Ls https://www.virtualbox.org/wiki/Linux_Downloads | grep -Po '(?<=href=")[^"]*'$(lsb_release -sc)'_amd64.deb' | grep -Po '(?<=-)[0-9]*(?=~)')")
 VBoxManage extpack install Oracle_VM_VirtualBox*.vbox-extpack
 # Installing Anaconda 2 & 3
-wget -i $(curl -Ls https://www.continuum.io/downloads | grep -Po '(?<=href=")[^"]*.Linux-x86_64.sh')
+wget $(curl -Ls https://www.continuum.io/downloads | grep -Po '(?<=href=")[^"]*Anaconda2[^"]*.Linux-x86_64.sh')
+wget $(curl -Ls https://www.continuum.io/downloads | grep -Po '(?<=href=")[^"]*Anaconda3[^"]*.Linux-x86_64.sh')
 bash Anaconda2*.sh -b -p $HOME/.anaconda/2
 bash Anaconda3*.sh -b -p $HOME/.anaconda/3
 # Installing Sublime text 3
