@@ -136,7 +136,7 @@ git config --global credential.helper cache
 git config --global credential.helper 'cache --timeout=3600'
 git config --global push.default simple
 # Set ZSH as the default shell
-sudo chsh -s /bin/zsh
+sudo chsh -s $(which zsh)
 # Configure LinuxBrew
 echo "# Configure LinuxBrew" >> ~/.zshrc
 echo 'export PATH=$HOME/.linuxbrew/bin:$PATH' >> ~/.zshrc
