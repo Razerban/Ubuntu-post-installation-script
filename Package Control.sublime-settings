@@ -1,0 +1,16 @@
+{
+	"bootstrapped": true,
+	"installed_packages":
+	[
+		"Anaconda",
+		"BracketHighlighter",
+		"Codecs33",
+		"ConvertToUTF8",
+		"Emmet",
+		"GitGutter",
+		"GitGutter-Edge",
+		"Package Control",
+		"SideBarEnhancements",
+		"Theme - Spacegray"
+	]
+}

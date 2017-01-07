@@ -163,6 +163,7 @@ echo "syntax on" >> .vimrc
 # Configure Sublime Text 3
 mkdir -p ~/.config/sublime-text-3/Installed\ Packages/
 wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
+cp Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
 mkdir -p ~/.config/sublime-text-3/Packages/User
 cp Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 # Update AppStream
@@ -187,6 +188,9 @@ rm -rf ~/Music
 rm -rf ~/Musique # Support for french version
 rm ~/examples.desktop
 mkdir ~/Development
+# Remove folders from the nautilus sidebar
+sed -i.bak '/XDG_TEMPLATES_DIR\|XDG_PUBLICSHARE_DIR\|XDG_DOCUMENTS_DIR\|XDG_MUSIC_DIR\|XDG_PICTURES_DIR\|XDG_VIDEOS_DIR/d' ~/.config/user-dirs.dirs
+echo "enabled=false" > ~/.config/user-dirs.conf # To make the change permanent
 # Add programs to start when user logs in
 mkdir -p ~/.config/autostart
 cp /usr/share/applications/indicator-multiload.desktop ~/.config/autostart
