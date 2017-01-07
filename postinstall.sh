@@ -30,13 +30,6 @@ sudo add-apt-repository ppa:nemh/systemback -y
 sudo add-apt-repository ppa:danielrichter2007/grub-customizer -y
 # Appgrid
 sudo add-apt-repository -y ppa:appgrid/stable -y
-# Vivaldi
-sudo sh -c "echo 'deb http://repo.vivaldi.com/stable/deb/ stable main' >> /etc/apt/sources.list"
-wget http://repo.vivaldi.com/stable/linux_signing_key.pub
-sudo apt-key add linux_signing_key.pub
-# Dropbox
-sudo add-apt-repository -y "deb http://linux.dropbox.com/ubuntu $(lsb_release -sc) main"
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys 5044912E
 # Canonical Partners
 sudo add-apt-repository -y "deb http://archive.canonical.com/ $(lsb_release -sc) partner"
 # Graphics Drivers
@@ -45,8 +38,6 @@ sudo add-apt-repository ppa:graphics-drivers/ppa -y
 sudo add-apt-repository ppa:webupd8team/java -y
 # Indicator Brightness
 sudo add-apt-repository ppa:indicator-brightness/ppa -y
-# OpenJDK
-sudo add-apt-repository ppa:openjdk-r/ppa -y
 
 echo '2. Updating the system packages and installing packages and softwares from repositories'
 # Updating the apt cache
@@ -54,7 +45,7 @@ sudo apt update
 # Installing system upgrades first
 sudo apt upgrade -y
 # Installing the packages and softwares from repos
-sudo apt install indicator-brightness ubuntu-restricted-extras unity-tweak-tool compizconfig-settings-manager arc-theme gnome-themes-* shimmer-themes adapta-gtk-theme curl wget ubuntu-make vlc gparted gksu clipit aptitude synaptic gdebi-core handbrake filezilla synaptic browser-plugin-vlc playonlinux aria2 qbittorrent tree inkscape clementine chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree gdebi skype gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 shutter dropbox flashplugin-installer gufw bleachbit youtube-dl python-software-properties openssh-server indicator-multiload caffeine variety indicator-sound-switcher indicator-netspeed-unity ffmpeg gxine htop libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller redshift redshift-gtk compiz compizconfig-settings-manager fonts-ancient-scripts ttf-ancient-fonts compiz-plugins systemback ubuntu-wallpapers-* ubuntukylin-wallpapers-* ubuntustudio-wallpapers git git-gui zsh build-essential curl python-setuptools ruby gcc libjpeg62:i386 libxtst6:i386 grub-customizer appgrid vivaldi-stable appstream/xenial-backports vim libxss1 git gitk gitg gparted linux-headers-generic dconf-tools rsync ssh openssh-server software-properties-common whiptail autotools-dev git-core samba winbind default-jdk openjdk-7-jdk oracle-java7-installer oracle-java8-installer oracle-java7-set-default -y
+sudo apt install unity-tweak-tool indicator-brightness ubuntu-restricted-extras unity-tweak-tool compizconfig-settings-manager arc-theme gnome-themes-* shimmer-themes adapta-gtk-theme curl wget ubuntu-make vlc gparted gksu clipit aptitude synaptic gdebi-core handbrake filezilla synaptic browser-plugin-vlc playonlinux aria2 qbittorrent tree inkscape clementine chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree gdebi gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 shutter  flashplugin-installer gufw bleachbit youtube-dl python-software-properties openssh-server indicator-multiload caffeine variety indicator-sound-switcher indicator-netspeed-unity ffmpeg gxine htop libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller redshift redshift-gtk compiz compizconfig-settings-manager fonts-ancient-scripts ttf-ancient-fonts compiz-plugins systemback ubuntu-wallpapers-* ubuntukylin-wallpapers-* ubuntustudio-wallpapers git git-gui zsh build-essential curl python-setuptools ruby gcc libjpeg62:i386 libxtst6:i386 grub-customizer appgrid vim libxss1 git gitk gitg gparted linux-headers-generic dconf-tools rsync ssh openssh-server software-properties-common whiptail autotools-dev git-core samba winbind oracle-java7-installer oracle-java8-installer oracle-java7-set-default -y
 sudo apt install -f -y
 
 echo '3. Installing softwares from official websites'
@@ -88,7 +79,9 @@ git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
 # Installing Intel Graphics Update Tool for Linux
-wget $(curl -Ls https://01.org/linuxgraphics/downloads | grep -Po '(?<=href=")[^"]*16.04[^"]*amd64.deb')
+wget $(curl -Ls https://01.org/linuxgraphics/downloads | grep -Po '(?<=href=")[^"]*'$(lsb_release -sr)'[^"]*amd64.deb')
+wget http://cz.archive.ubuntu.com/ubuntu/pool/main/p/packagekit/libpackagekit-glib2-16_0.8.12-1ubuntu5_amd64.deb
+sudo dpkg -i libpackagekit-glib2-16_0.8.12-1ubuntu5_amd64.deb
 sudo dpkg -i intel-graphics-update-tool*.deb
 wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-GROUP-KEY-ilg -O - | sudo apt-key add -
 wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg -O - | sudo apt-key add -
@@ -109,37 +102,12 @@ gsettings set org.compiz.unityshell:/org/compiz/profiles/unity/plugins/unityshel
 # Configure the dash opening
 gsettings set com.canonical.Unity form-factor 'Automatic'
 # Configure the desktop launchers
-gsettings set com.canonical.Unity.Launcher favorites "['application://ubiquity.desktop', 'application://org.gnome.Nautilus.desktop', 'application://vivaldi.desktop', 'application://sublime-text.desktop', 'application://firefox.desktop', 'application://org.gnome.Software.desktop', 'application://unity-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']"
+gsettings set com.canonical.Unity.Launcher favorites "['application://ubiquity.desktop', 'application://org.gnome.Nautilus.desktop', 'application://sublime-text.desktop', 'application://firefox.desktop', 'application://org.gnome.Software.desktop', 'application://unity-control-center.desktop', 'unity://running-apps', 'unity://expo-icon', 'unity://devices']"
 # Disable the online search in dash
 gsettings set com.canonical.Unity.Lenses remote-content-search 'none'
 gsettings set com.canonical.Unity.Lenses disabled-scopes "['more_suggestions-amazon.scope', 'more_suggestions-u1ms.scope', 'more_suggestions-populartracks.scope', 'music-musicstore.scope', 'more_suggestions-ebay.scope', 'more_suggestions-ubuntushop.scope', 'more_suggestions-skimlinks.scope']"
-
-# Configure the Indicator multiload
-gsettings set de.mh21.indicator.multiload.general autostart true
-gsettings set de.mh21.indicator.multiload.general speed 500
-gsettings set de.mh21.indicator.multiload.general width 40
-gsettings set de.mh21.indicator.multiload.graphs.cpu enabled true
-gsettings set de.mh21.indicator.multiload.graphs.disk enabled false
-gsettings set de.mh21.indicator.multiload.graphs.load enabled false
-gsettings set de.mh21.indicator.multiload.graphs.mem enabled true
-gsettings set de.mh21.indicator.multiload.graphs.net enabled false
-gsettings set de.mh21.indicator.multiload.graphs.swap enabled false
 # Disable the 'Recent files' feature
 gsettings set org.gnome.desktop.privacy remember-recent-files false
-# Gitg tweaking
-gsettings set org.gnome.gitg.preferences.commit.message right-margin-at 72
-gsettings set org.gnome.gitg.preferences.commit.message show-right-margin true
-gsettings set org.gnome.gitg.preferences.diff external false
-gsettings set org.gnome.gitg.preferences.hidden sign-tag true
-gsettings set org.gnome.gitg.preferences.view.files blame-mode true
-gsettings set org.gnome.gitg.preferences.view.history collapse-inactive-lanes 2
-gsettings set org.gnome.gitg.preferences.view.history collapse-inactive-lanes-active true
-gsettings set org.gnome.gitg.preferences.view.history search-filter false
-gsettings set org.gnome.gitg.preferences.view.history show-virtual-staged true
-gsettings set org.gnome.gitg.preferences.view.history show-virtual-stash true
-gsettings set org.gnome.gitg.preferences.view.history show-virtual-unstaged true
-gsettings set org.gnome.gitg.preferences.view.history topo-order false
-gsettings set org.gnome.gitg.preferences.view.main layout-vertical 'vertical'
 # Disable guest session from login screen
 sudo sh -c "echo 'allow-guest=false' >> /usr/share/lightdm/lightdm.conf.d/50-ubuntu.conf"
 # Apply theme to the ubuntu interface
@@ -193,13 +161,14 @@ sudo sh -c "echo 'net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf"
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 echo "syntax on" >> .vimrc
 # Configure Sublime Text 3
-wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed Packages/Package Control.sublime-package
-cp Package Control.sublime-settings ~/.config/sublime-text-3/Packages/User/Package Control.sublime-settings
+mkdir -p ~/.config/sublime-text-3/Installed\ Packages/
+wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
+mkdir -p ~/.config/sublime-text-3/Packages/User
 cp Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 # Update AppStream
 sudo appstreamcli refresh --force
 # Remove gedit
-sudo apt remove gedit unclutter -y
+sudo apt remove gedit libreoffice* unclutter -y
 # Cleanup
 sudo apt -f install -y
 sudo apt-get -y autoremove
@@ -209,6 +178,8 @@ sudo apt-get -y clean
 rm -rf ~/Documents
 rm -rf ~/Public
 rm -rf ~/Templates
+rm -rf ~/Images # Support for french version
+rm -rf ~/Pictures
 rm -rf ~/Modèles # Support for french version
 rm -rf ~/Videos
 rm -rf ~/Vidéos # Support for french version
@@ -216,9 +187,6 @@ rm -rf ~/Music
 rm -rf ~/Musique # Support for french version
 rm ~/examples.desktop
 mkdir ~/Development
-# Remove folders from the nautilus sidebar
-sed -i.bak '/XDG_TEMPLATES_DIR\|XDG_PUBLICSHARE_DIR\|XDG_DOCUMENTS_DIR\|XDG_MUSIC_DIR\|XDG_PICTURES_DIR\|XDG_VIDEOS_DIR/d' ./.config/user-dirs.dirs
-echo "enabled=false" > ~/.config/user-dirs.conf # To make the change permanent
 # Add programs to start when user logs in
 mkdir -p ~/.config/autostart
 cp /usr/share/applications/indicator-multiload.desktop ~/.config/autostart
