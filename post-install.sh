@@ -52,8 +52,6 @@ sudo add-apt-repository ppa:webupd8team/java -y
 sudo add-apt-repository ppa:indicator-brightness/ppa -y
 # Brightness controller
 sudo add-apt-repository ppa:apandada1/brightness-controller -y
-# Indicator sensors
-sudo add-apt-repository ppa:alexmurray/indicator-sensors -y
 # Indicator keylock
 sudo add-apt-repository ppa:tsbarnes/indicator-keylock -y
 
