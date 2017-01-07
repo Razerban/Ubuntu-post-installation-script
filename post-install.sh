@@ -9,6 +9,18 @@
 #                                                                    #
 ######################################################################
 
+echo '0. Configuring editors and copying files'
+# Configure VIM and NANO
+curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
+echo "syntax on" >> ~/.vimrc
+# Configuring the Z shell
+cp zshrc ~/.zshrc
+# Configure Sublime Text 3
+mkdir -p ~/.config/sublime-text-3/Installed\ Packages/
+wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
+cp Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
+mkdir -p ~/.config/sublime-text-3/Packages/User
+cp Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 echo '1. Adding repositories'
 # Entering the tmp directory
 cd /tmp
@@ -125,8 +137,6 @@ git config --global credential.helper 'cache --timeout=3600'
 git config --global push.default simple
 # Set ZSH as the default shell
 sudo chsh -s /bin/zsh
-# Configuring the Z shell
-cp zshrc ~/.zshrc
 # Configure LinuxBrew
 echo "# Configure LinuxBrew" >> ~/.zshrc
 echo 'export PATH=$HOME/.linuxbrew/bin:$PATH' >> ~/.zshrc
@@ -159,15 +169,6 @@ sudo sh -c "echo 'nameserver 8.8.4.4' >> /etc/resolv.conf"
 sudo sh -c "echo 'net.ipv6.conf.all.disable_ipv6=1' >> /etc/sysctl.conf"
 sudo sh -c "echo 'net.ipv6.conf.default.disable_ipv6=1' >> /etc/sysctl.conf"
 sudo sh -c "echo 'net.ipv6.conf.lo.disable_ipv6=1' >> /etc/sysctl.conf"
-# Configure VIM and NANO
-curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
-echo "syntax on" >> .vimrc
-# Configure Sublime Text 3
-mkdir -p ~/.config/sublime-text-3/Installed\ Packages/
-wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
-cp Package\ Control.sublime-settings ~/.config/sublime-text-3/Packages/User/Package\ Control.sublime-settings
-mkdir -p ~/.config/sublime-text-3/Packages/User
-cp Preferences.sublime-settings ~/.config/sublime-text-3/Packages/User/Preferences.sublime-settings
 # Update AppStream
 sudo appstreamcli refresh --force
 # Cleanup
