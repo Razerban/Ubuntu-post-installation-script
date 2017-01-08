@@ -85,7 +85,7 @@ fi
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
 alias clean="sudo apt -f install -y && sudo apt-get -y autoremove && sudo apt-get -y autoclean && sudo apt-get -y clean"
-alias update="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
+alias update="brew update && sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
 # USEFUL ALIASES END
 
 # JAVA VARIABLES START

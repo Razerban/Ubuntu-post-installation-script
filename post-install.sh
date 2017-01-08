@@ -96,16 +96,6 @@ sudo dpkg -i teamviewer_i386.deb
 git clone https://github.com/powerline/fonts.git
 cd fonts
 ./install.sh
-# Installing Intel Graphics Update Tool for Linux
-wget $(curl -Ls https://01.org/linuxgraphics/downloads | grep -Po '(?<=href=")[^"]*'$(lsb_release -sr)'[^"]*amd64.deb')
-wget http://cz.archive.ubuntu.com/ubuntu/pool/main/p/packagekit/libpackagekit-glib2-16_0.8.12-1ubuntu5_amd64.deb
-sudo dpkg -i libpackagekit-glib2-16_0.8.12-1ubuntu5_amd64.deb
-sudo dpkg -i intel-graphics-update-tool*.deb
-wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-GROUP-KEY-ilg -O - | sudo apt-key add -
-wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg -O - | sudo apt-key add -
-wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-2 -O - | sudo apt-key add -
-wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-3 -O - | sudo apt-key add -
-wget --no-check-certificate https://download.01.org/gfx/RPM-GPG-KEY-ilg-4 -O - | sudo apt-key add -
 # Installing Microsoft fonts
 wget http://ftp.fr.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
