@@ -52,6 +52,8 @@ sudo add-apt-repository ppa:webupd8team/java -y
 sudo add-apt-repository ppa:indicator-brightness/ppa -y
 # Brightness controller
 sudo add-apt-repository ppa:apandada1/brightness-controller -y
+# Prime Indicator Plus
+sudo add-apt-repository ppa:nilarimogard/webupd8 -y
 
 echo '2. Updating the system packages and installing packages and softwares from repositories'
 # Remove gedit
@@ -61,7 +63,7 @@ sudo apt update
 # Installing system upgrades first
 sudo apt upgrade -y
 # Installing the packages and softwares from repos
-sudo apt install indicator-cpufreq unity-tweak-tool brightness-controller indicator-brightness ubuntu-restricted-extras unity-tweak-tool compizconfig-settings-manager arc-theme gnome-themes-* shimmer-themes adapta-gtk-theme curl wget ubuntu-make vlc gparted gksu clipit aptitude synaptic gdebi-core handbrake filezilla synaptic browser-plugin-vlc playonlinux aria2 qbittorrent tree inkscape clementine chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree gdebi gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 shutter  flashplugin-installer gufw bleachbit youtube-dl python-software-properties openssh-server indicator-multiload caffeine variety indicator-sound-switcher indicator-netspeed-unity ffmpeg gxine htop libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller redshift redshift-gtk compiz compizconfig-settings-manager fonts-ancient-scripts ttf-ancient-fonts compiz-plugins systemback ubuntu-wallpapers-* ubuntukylin-wallpapers-* ubuntustudio-wallpapers git git-gui zsh build-essential curl python-setuptools ruby gcc libjpeg62:i386 libxtst6:i386 grub-customizer appgrid vim libxss1 git gitk gitg gparted linux-headers-generic dconf-tools rsync ssh openssh-server software-properties-common whiptail autotools-dev git-core samba winbind oracle-java7-installer oracle-java7-set-default -y
+sudo apt install prime-indicator-plus indicator-cpufreq unity-tweak-tool brightness-controller indicator-brightness ubuntu-restricted-extras unity-tweak-tool compizconfig-settings-manager arc-theme gnome-themes-* shimmer-themes adapta-gtk-theme curl wget ubuntu-make vlc gparted gksu clipit aptitude synaptic gdebi-core handbrake filezilla synaptic browser-plugin-vlc playonlinux aria2 qbittorrent tree inkscape clementine chromium-codecs-ffmpeg-extra pepperflashplugin-nonfree gdebi gtk2-engines-murrine:i386 gtk2-engines-pixbuf:i386 shutter  flashplugin-installer gufw bleachbit youtube-dl python-software-properties openssh-server indicator-multiload caffeine variety indicator-sound-switcher indicator-netspeed-unity ffmpeg gxine htop libdvdread4 icedax tagtool libdvd-pkg easytag id3tool lame libxine2-ffmpeg nautilus-script-audio-convert libmad0 mpg321 libavcodec-extra gstreamer1.0-libav p7zip-rar p7zip-full unace unrar zip unzip sharutils rar uudeview mpack arj cabextract file-roller redshift redshift-gtk compiz compizconfig-settings-manager fonts-ancient-scripts ttf-ancient-fonts compiz-plugins systemback ubuntu-wallpapers-* ubuntukylin-wallpapers-* ubuntustudio-wallpapers git git-gui zsh build-essential curl python-setuptools ruby gcc libjpeg62:i386 libxtst6:i386 grub-customizer appgrid vim libxss1 git gitk gitg gparted linux-headers-generic dconf-tools rsync ssh openssh-server software-properties-common whiptail autotools-dev git-core samba winbind oracle-java7-installer oracle-java7-set-default -y
 sudo apt install -f -y
 
 echo '3. Installing softwares from official websites'
@@ -198,12 +200,22 @@ Type=Application
 Icon=utilities-system-monitor
 Categories=GNOME;System;
 EOL"
+sudo sh -c "cat <<EOL >>/usr/share/applications/prime-indicator.desktop
+[Desktop Entry]
+Name=Prime Indicator Plus
+Exec=prime-indicator
+Terminal=false
+Type=Application
+Icon=nvidia-settings
+Categories=GNOME;System;Settings;
+EOL"
 cp /usr/share/applications/indicator-cpufreq.desktop ~/.config/autostart
 cp /usr/share/applications/indicator-multiload.desktop ~/.config/autostart
 cp /usr/share/applications/redshift-gtk.desktop ~/.config/autostart
 cp /usr/share/applications/indicator-netspeed-unity.desktop ~/.config/autostart
 cp /usr/share/applications/indicator-sound-switcher.desktop ~/.config/autostart
 cp /usr/share/applications/caffeine-indicator.desktop ~/.config/autostart
+cp /usr/share/applications/prime-indicator.desktop ~/.config/autostart
 # Make Ubuntu use 'Local' time instead of Hardware time
 sudo timedatectl set-local-rtc 1
 timedatectl set-local-rtc 1
