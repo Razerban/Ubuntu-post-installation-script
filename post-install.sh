@@ -14,7 +14,7 @@ echo '0. Configuring editors and copying files'
 curl https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh | sh
 echo "syntax on" >> ~/.vimrc
 # Configuring the Z shell
-cp zshrc ~/.zshrc
+cp zshrc ~/.zshrc.bak
 # Configure Sublime Text 3
 mkdir -p ~/.config/sublime-text-3/Installed\ Packages/
 wget https://packagecontrol.io/Package%20Control.sublime-package -O ~/.config/sublime-text-3/Installed\ Packages/Package\ Control.sublime-package
@@ -69,6 +69,8 @@ echo '3. Installing softwares from official websites'
 wget -qO- https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/install-papirus-home-gtk.sh | sh
 # Install Oh-my-zsh framework
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+rm -rf ~/.zshrc
+mv ~/.zshrc.bak ~/.zshrc
 # Install Linuxbrew
 ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
 # Install Virtualbox and Virtualbox extension pack
