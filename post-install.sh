@@ -133,31 +133,6 @@ git config --global credential.helper 'cache --timeout=3600'
 git config --global push.default simple
 # Set ZSH as the default shell
 sudo chsh -s $(which zsh)
-# Configure LinuxBrew
-echo "# Configure LinuxBrew" >> ~/.zshrc
-echo 'export PATH=$HOME/.linuxbrew/bin:$PATH' >> ~/.zshrc
-echo 'export MANPATH=$HOME/.linuxbrew/share/man:$MANPATH' >> ~/.zshrc
-echo 'export INFOPATH=$HOME/.linuxbrew/share/info:$INFOPATH' >> ~/.zshrc
-echo "# END Configure LinuxBrew" >> ~/.zshrc
-echo '' >> ~/.zshrc
-# Configure the default Python path and add some aliases
-echo "# PYTHON VARIABLES START" >> ~/.zshrc
-echo 'export ANACONDA2=$HOME/.anaconda/2' >> ~/.zshrc
-echo 'export ANACONDA3=$HOME/.anaconda/3' >> ~/.zshrc
-echo 'export PYTHONPATH=$ANACONDA2:$PYTHONPATH$' >> ~/.zshrc
-echo 'export PYTHONUSERBASE=$ANACONDA2' >> ~/.zshrc
-echo 'export PATH=$ANACONDA3/bin:$PATH' >> ~/.zshrc
-echo 'export PATH=$ANACONDA2/bin:$PATH' >> ~/.zshrc
-echo "# PYTHON VARIABLES END" >> ~/.zshrc
-echo '' >> ~/.zshrc
-echo "# PYTHON ALIASES START" >> ~/.zshrc
-echo 'alias update_python2="$ANACONDA2/bin/conda update --all -y && $ANACONDA2/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA2/bin/pip install -U"' >> ~/.zshrc
-echo 'alias update_python3="$ANACONDA3/bin/conda update --all -y && $ANACONDA3/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA3/bin/pip install -U"' >> ~/.zshrc
-echo 'alias update_python="update_python2 && update_python3"' >> ~/.zshrc
-echo 'alias pip2="$ANACONDA2/bin/pip"' >> ~/.zshrc
-echo 'alias pip3="$ANACONDA3/bin/pip"' >> ~/.zshrc
-echo "# PYTHON ALIASES END" >> ~/.zshrc
-echo '' >> ~/.zshrc
 # Add the DNS servers of Google
 sudo sh -c "echo 'nameserver 8.8.8.8' >> /etc/resolv.conf"
 sudo sh -c "echo 'nameserver 8.8.4.4' >> /etc/resolv.conf"
