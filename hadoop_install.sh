@@ -106,7 +106,9 @@ cat > hdfs-site.xml << EOL
 </configuration>
 EOL
 
+cp /opt/hadoop/etc/hadoop /opt/hadoop/conf
 cd /opt/hadoop/conf
+
 cat > hadoop-local.xml << EOL
 <?xml version="1.0"?>
 <configuration>
