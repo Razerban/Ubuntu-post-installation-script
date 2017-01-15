@@ -11,7 +11,7 @@
 ######################################################################
 
 echo "1. Install JDK, Python Software Properties, OpenSSH"
-sudo apt install default-jdk python-software-properties openssh-server -y
+sudo apt install python-software-properties openssh-server -y
 
 echo "2. Start ssh server"
 sudo service ssh restart
@@ -37,6 +37,7 @@ echo 'export HADOOP_INSTALL=/opt/hadoop' >> ~/.zshrc
 echo 'export PATH=$PATH:$HADOOP_INSTALL/bin' >> ~/.zshrc
 echo 'export PATH=$PATH:$HADOOP_INSTALL/sbin' >> ~/.zshrc
 echo 'export HADOOP_MAPRED_HOME=$HADOOP_INSTALL' >> ~/.zshrc
+echo 'export HADOOP_CONF_DIR=$HADOOP_INSTALL/conf' >> ~/.zshrc
 echo 'export HADOOP_COMMON_HOME=$HADOOP_INSTALL' >> ~/.zshrc
 echo 'export HADOOP_HDFS_HOME=$HADOOP_INSTALL' >> ~/.zshrc
 echo 'export YARN_HOME=$HADOOP_INSTALL' >> ~/.zshrc
@@ -101,6 +102,57 @@ cat > hdfs-site.xml << EOL
     <property>
         <name>dfs.datanode.data.dir</name>
         <value>file:/opt/hadoop/app/hdfs/datanode</value>
+    </property>
+</configuration>
+EOL
+
+cd /opt/hadoop/conf
+cat > hadoop-local.xml << EOL
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>file:///</value>
+    </property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>local</value>
+    </property>
+</configuration>
+EOL
+
+cat > hadoop-localhost.xml << EOL
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://localhost/</value>
+    </property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>localhost:8032</value>
+    </property>
+</configuration>
+EOL
+
+cat > hadoop-cluster.xml << EOL
+<?xml version="1.0"?>
+<configuration>
+    <property>
+        <name>fs.defaultFS</name>
+        <value>hdfs://namenode/</value>
+    </property>
+    <property>
+        <name>mapreduce.framework.name</name>
+        <value>yarn</value>
+    </property>
+    <property>
+        <name>yarn.resourcemanager.address</name>
+        <value>resourcemanager:8032</value>
     </property>
 </configuration>
 EOL
