@@ -108,9 +108,12 @@ export PATH=$ANACONDA2/bin:$PATH
 # PYTHON VARIABLES END
 
 # PYTHON ALIASES START
-alias update_python2="$ANACONDA2/bin/conda update --all -y && $ANACONDA2/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA2/bin/pip install -U"
-alias update_python3="$ANACONDA3/bin/conda update --all -y && $ANACONDA3/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA3/bin/pip install -U"
-alias update_python="update_python2 && update_python3"
+alias update_anaconda2="$ANACONDA2/bin/conda update --all -y && $ANACONDA2/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA2/bin/pip install -U"
+alias update_anaconda3="$ANACONDA3/bin/conda update --all -y && $ANACONDA3/bin/pip freeze -l | awk  -F '==' '{ print $1 }' | xargs $ANACONDA3/bin/pip install -U"
+alias clean_anaconda2="$ANACONDA2/bin/conda clean --all -y"
+alias clean_anaconda3="$ANACONDA3/bin/conda clean --all -y"
+alias update_anaconda="update_anaconda2 && update_anaconda3"
+alias clean_anaconda="clean_anaconda2 && clean_anaconda3"
 alias pip="$ANACONDA2/bin/pip"
 alias pip2="pip"
 alias pip3="$ANACONDA3/bin/pip"
