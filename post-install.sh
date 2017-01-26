@@ -104,6 +104,18 @@ cd fonts
 # Installing Microsoft fonts
 wget http://ftp.fr.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.6_all.deb
 sudo dpkg -i ttf-mscorefonts-installer_3.6_all.deb
+# Installing NodeJS and NPM
+wget $(curl -Ls https://nodejs.org/en/download/current/ | grep -Po '(?<=href=")[^"]*(?=">[^"]*.tar.gz)') -O node.tar.gz
+tar -xvzf node.tar.gz
+cd node
+./configure
+make -j$(nproc)
+sudo make install
+# Installing RubyGems
+cd ..
+git clone https://github.com/rubygems/rubygems
+cd rubygems
+sudo ruby setup.rb
 
 echo '4. Configuring installed packages and softwares and tweaking the system'
 # Show the username on the top menu bar
