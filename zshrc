@@ -84,8 +84,10 @@ fi
 # USEFUL ALIASES START
 alias zshconfig="nano ~/.zshrc"
 alias ohmyzsh="nano ~/.oh-my-zsh"
-alias clean="sudo apt -f install -y && sudo apt-get -y autoremove && sudo apt-get -y autoclean && sudo apt-get -y clean"
-alias update="brew update && sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
+alias system_update="sudo apt-get update -y && sudo apt-get upgrade -y && sudo apt-get dist-upgrade -y"
+alias system_clean="sudo apt -f install -y && sudo apt-get -y autoremove && sudo apt-get -y autoclean && sudo apt-get -y clean"
+alias update="system_update && brew update && update_anaconda && update_gems && update_npm && tldr -u"
+alias clean="system_clean && brew cleanup && clean_anaconda && clean_gems && clean_npm"
 # USEFUL ALIASES END
 
 # JAVA VARIABLES START
@@ -118,6 +120,16 @@ alias pip="$ANACONDA2/bin/pip"
 alias pip2="pip"
 alias pip3="$ANACONDA3/bin/pip"
 # PYTHON ALIASES END
+
+# RUBY ALIASES START
+alias update_gems="sudo gem update --system && sudo gem update"
+alias clean_gems="sudo gem cleanup -v"
+# RUBY ALIASES STOP
+
+# NPM ALIASES START
+alias update_npm="sudo npm install npm -g && sudo npm update --save"
+alias clean_npm="sudo npm cache clean"
+# NPM ALIASES STOP
 
 # Fixing brightness problem
 # Usage : brightness PERCENTAGE_VALUE
