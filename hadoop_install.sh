@@ -45,7 +45,7 @@ echo 'export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_INSTALL/lib/native' >> ~/.zshr
 echo 'export HADOOP_OPTS="-Djava.library.path=$HADOOP_INSTALL/lib/native"' >> ~/.zshrc
 echo '' >> ~/.zshrc
 echo '# HADOOP ALIASES START' >> ~/.zshrc
-echo 'alias hstart="start-dfs.sh && start-yarn.sh"' >> ~/.zshrc
+echo 'alias hstart="start-dfs.sh && start-yarn.sh && jps"' >> ~/.zshrc
 echo 'alias hstop="stop-dfs.sh && stop-yarn.sh"' >> ~/.zshrc
 echo 'alias hrestart="hstop && hstart"' >> ~/.zshrc
 echo '# HADOOP ALIASES END' >> ~/.zshrc
