@@ -138,3 +138,10 @@ function brightness() {
     WANTED_VALUE=$(echo "$1 * $MAX_VALUE / 100" | bc)
     sudo sh -c "echo $WANTED_VALUE > /sys/class/backlight/intel_backlight/brightness"
 }
+
+# Function to install python packages for Anaconda distributions
+# Usage : pipinstall PACKAGE_NAMES
+function pipinstall() {
+    pip install $@
+    pip3 install $@
+}
